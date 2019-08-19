@@ -26,3 +26,6 @@ class MakeVisual:
 
     def get_data(self):
         return self._data
+
+    def something(self):
+        pass
