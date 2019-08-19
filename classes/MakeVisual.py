@@ -1,5 +1,5 @@
 import webview
-
+from os import listdir
 
 class MakeVisual:
 
@@ -18,7 +18,8 @@ class MakeVisual:
         webview.start()
 
     def build(self, title):
-
+        build_dirs = ("../javaScript", "../html", "../css")
+        # need to figur out build/constructing logic
         self._lunch_gui(title)
 
     def get_block(self):
@@ -26,3 +27,6 @@ class MakeVisual:
 
     def get_data(self):
         return self._data
+
+
+print(listdir(mypath))

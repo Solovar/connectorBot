@@ -2,7 +2,7 @@
 
 class EnvRead:
 
-    def __init__(self, get = ''):
+    def __init__(self, get=''):
         get_length = len(get)+1
         self.return_data = False
         try:
