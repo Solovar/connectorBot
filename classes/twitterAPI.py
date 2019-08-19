@@ -1,13 +1,8 @@
 import twitter
-api = twitter.Api(consumer_key=[''],   # consumer key
-                  consumer_secret=[''],            # consumer secret
-                  access_token_key=[''],              # access token
-                  access_token_secret=[''])    # access token secret
+from classes.EnvRead import EnvRead
+api = twitter.Api(consumer_key=[EnvRead('TWITTER_CON_KEY')],   # consumer key
+                  consumer_secret=[EnvRead('TWITTER_CON_SECRET')],            # consumer secret
+                  access_token_key=[EnvRead('TWITTER_ACC_TOKEN')],              # access token
+                  access_token_secret=[EnvRead('TWITTER_ACC_T_SECRET')])    # access token secret
 
 users = api.GetFriends()
-print([u.name for u in users])
-
-
-'''
-https://python-twitter.readthedocs.io/en/latest/index.html
-'''

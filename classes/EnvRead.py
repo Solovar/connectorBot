@@ -9,7 +9,7 @@ class EnvRead:
             f = open("../.env", "r")
             for x in f:
                 if not x.find(get):
-                    self.return_data = x[get_length:]
+                    self.return_data = str(x[get_length:])
                     break
             f.close()
         except (OSError, IOError) as e:
