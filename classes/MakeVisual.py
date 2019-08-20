@@ -1,6 +1,7 @@
 import webview
 from os import listdir
 
+
 class MakeVisual:
 
     def __init__(self):
