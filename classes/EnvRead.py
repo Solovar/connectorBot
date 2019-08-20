@@ -16,4 +16,6 @@ class EnvRead:
             self.return_data = e
 
     def __repr__(self):
-        return self.return_data
+        return str(self.return_data)
+
+
