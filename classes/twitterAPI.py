@@ -1,5 +1,4 @@
 import tweepy
-import tweepy as tweepy
 
 from classes.EnvRead import EnvRead
 
