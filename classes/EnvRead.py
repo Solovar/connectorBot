@@ -1,4 +1,3 @@
-import tweepy
 
 
 class EnvRead:
