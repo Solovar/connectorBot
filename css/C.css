@@ -1,8 +1,9 @@
 :root{
     /* colors */
-    --dark: #14142b;
-    --light: #6638ff;
+    --dark: #090919;
+    --light: rgb(15, 0, 255);
     --complementary: #e09b2c;
+    --gray: rgba(128, 128, 128, 0.44);
 }
 
 body{
@@ -10,15 +11,33 @@ body{
     color: var(--light);
 }
 
-header{
-    border-bottom-color: var(--complementary);
+header h1{
+    font-size: 110%;
 }
+
+nav{
+    min-height: 400px !important;
+}
+a
+{
+    color: var(--light);
+}
+    a:hover{
+        color: var(--complementary);
+        background-color: var(--gray);
+    }
 
 .container{
     float: left;
     width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 .highlight{
     color: var(--complementary);
+}
+
+.border-complementary{
+    border-color: var(--complementary) !important;
 }

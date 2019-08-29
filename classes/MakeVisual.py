@@ -27,9 +27,11 @@ class MakeVisual:
 
     def _compile(self):
         self._blocks['compiled'] += '<!DOCTYPE html><html lang="en">'
+        self._blocks['compiled'] += '<body>'
         self._blocks['compiled'] += '<div class="container">'
-        self._blocks['compiled'] += '<body>' + self._blocks['body'] + '</body>'
+        self._blocks['compiled'] += self._blocks['body']
         self._blocks['compiled'] += '</div>'
+        self._blocks['compiled'] += '</body>'
         self._blocks['compiled'] += '</html>'
 
     def build(self, title):
