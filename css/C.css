@@ -1,0 +1,24 @@
+:root{
+    /* colors */
+    --dark: #14142b;
+    --light: #6638ff;
+    --complementary: #e09b2c;
+}
+
+body{
+    background-color: var(--dark);
+    color: var(--light);
+}
+
+header{
+    border-bottom-color: var(--complementary);
+}
+
+.container{
+    float: left;
+    width: 100% !important;
+}
+
+.highlight{
+    color: var(--complementary);
+}
