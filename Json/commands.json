@@ -1,0 +1,7 @@
+{
+  "rule": {
+    "update": true,
+    "make": true
+  },
+  "commands":{}
+}

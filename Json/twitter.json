@@ -1,0 +1,15 @@
+{
+  "rule": {
+    "update": true,
+    "make": false
+  },
+  "watch":{
+    "tweets":[],
+    "tags": []
+  },
+  "display": false,
+  "latestResponds":{
+    "tweets":{},
+    "tags": {}
+  }
+}
