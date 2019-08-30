@@ -1,8 +1,8 @@
 :root{
     /* colors */
-    --dark: #090919;
-    --light: rgb(15, 0, 255);
-    --complementary: #e09b2c;
+    --dark: #2d2d2d;
+    --light: #c6716f;
+    --complementary: #68bb70;
     --gray: rgba(128, 128, 128, 0.44);
 }
 
@@ -40,4 +40,14 @@ a
 
 .border-complementary{
     border-color: var(--complementary) !important;
+}
+
+#content-area h2
+{
+    font-size: 110%;
+}
+
+#content-area nav
+{
+    min-height: auto !important;
 }

@@ -22,12 +22,12 @@ class MakeVisual:
                 str(self._blocks["JS"])
             )
 
-        window = webview.create_window(title, html=str(self._blocks["compiled"]), min_size=(800, 500), confirm_close=True, background_color='#FFF', text_select=True)
+        window = webview.create_window(title, html=str(self._blocks["compiled"]), min_size=(800, 500), confirm_close=True, background_color='#2d2d2d', text_select=True)
         webview.start(evaluate_all, window)
 
     def _compile(self):
         self._blocks['compiled'] += '<!DOCTYPE html><html lang="en">'
-        self._blocks['compiled'] += '<body>'
+        self._blocks['compiled'] += '<body class="fade">'
         self._blocks['compiled'] += '<div class="container">'
         self._blocks['compiled'] += self._blocks['body']
         self._blocks['compiled'] += '</div>'

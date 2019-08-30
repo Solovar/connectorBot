@@ -1,12 +1,35 @@
+$(document).ready(function() {
 //alert("test alert")
+// for showing modals
 
-$('.content-block').hide();
+    $(".modalButton").click(function () {
+        let itemID = $(this).attr('id');
+        $("#" + itemID + "Modal").modal('show');
+    });
 
-$(".modalButton").click(function () {
-    let itemID = $(this).attr('id');
-    $("#" + itemID + "Modal").modal('show');
-});
+    $(".modalClose").click(function () {
+        $(".modal").modal('hide');
+    });
 
-$(".modalClose").click(function () {
-    $(".modal").modal('hide');
+// for switching content
+    var currentLocation = 'console';
+    swapContent(false);
+
+    $(".content-btn").click(function () {
+        let itemID = $(this).attr('id');
+        swapContent(itemID)
+    });
+
+    function swapContent(swap) {
+        let getFrom = '#' + currentLocation + '-block';
+        const contentArea = '#content-area';
+        $(contentArea).empty();
+
+        if (swap !== false) {
+            getFrom = '#' + swap + '-block';
+        }
+
+        let data = $(getFrom).html();
+        $(contentArea).prepend(data);
+    }
 });
