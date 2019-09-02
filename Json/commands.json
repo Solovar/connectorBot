@@ -1,7 +1,12 @@
 {
   "rule": {
     "update": true,
-    "make": true
+    "make": false
   },
-  "commands":{}
+  "commands":{
+    "rule": {
+      "update": true,
+      "make": true
+    }
+  }
 }

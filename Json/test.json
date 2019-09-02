@@ -1,0 +1,11 @@
+{
+  "rule": {
+    "update": true,
+    "make": false
+  },
+  "persons":{
+    "anna": {"age": 22},
+    "peter": {"age": 22},
+    "jasper": {"age": 22}
+  }
+}
