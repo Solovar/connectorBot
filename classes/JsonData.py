@@ -66,14 +66,11 @@ class JsonData:
     def update(self, data, path):  # build and update a json file
         self.get(path)
         if self.get_rule()['update'] and self.__error is False:
-            dir_look_up = str(path).split('/')
-            file = "../json/" + dir_look_up[0] + ".json"
-            print(dir_look_up)
+            dir_look_up = tuple(str(path).split('/'))
             self.get(dir_look_up[0])
-            storage = self.result()
-            print(type(storage))
-            if self.__error:
-                pass
+            print(dir_look_up[-2])
+            storage = json.dumps(self.result())
+            print(storage)
             # self.__save(updated_data, file)
             # self.__pull_all()
 
@@ -82,12 +79,17 @@ class JsonData:
 
 
 # work/testing area
-JsonData.getinstance().update('36', "test/persons/anna/age")
-exit()
-JsonData.getinstance().get("test/persons/anna")
+x = JsonData.getinstance()
+x.get("test/persons/anna")
+print(x.result())
+x.update('36', "test/persons/anna/age")
 
-if not JsonData.getinstance().error():
-    print(JsonData.getinstance().result())
-    print(JsonData.getinstance().get_rule())
+x.get("test/persons")
+print(x.result())
+
+exit()
+if not x.error():
+    print(x.result())
+    print(x.get_rule())
 else:
-    print(JsonData.getinstance().error())
+    print(x.error())
