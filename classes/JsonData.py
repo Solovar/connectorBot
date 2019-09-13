@@ -1,5 +1,12 @@
 import json
 from os import listdir
+import collections
+import six
+
+try:
+    collectionsAbc = collections.abc
+except:
+    collectionsAbc = collections
 
 
 class JsonData:
@@ -63,28 +70,69 @@ class JsonData:
     def result(self):  # return the result of the current path
         return self.__result
 
-    def update(self, data, path):  # build and update a json file
-        self.get(path)
-        if self.get_rule()['update'] and self.__error is False:
-            dir_look_up = tuple(str(path).split('/'))
-            self.get(dir_look_up[0])
-            print(dir_look_up[-2])
-            storage = json.dumps(self.result())
-            print(storage)
-            # self.__save(updated_data, file)
-            # self.__pull_all()
+    def update(self, old_dict, new_data, top_dict):  # build and update a json file
+        if self.__error is False:
+            file = "../json/" + top_dict + '.json'
+            for k, v in six.iteritems(new_data):
+                dv = old_dict.get(k, {})
+                if not isinstance(dv, collectionsAbc.Mapping):
+                    old_dict[k] = v
+                elif isinstance(v, collectionsAbc.Mapping):
+                    old_dict[k] = self.update(dv, v, top_dict)
+                else:
+                    old_dict[k] = v
+                # return old_dict
+            self.__save(old_dict, file)
+            self.__pull_all()
+            return old_dict
 
     def error(self):  # return the current error
         return self.__error
 
 
 # work/testing area
-x = JsonData.getinstance()
-x.get("test/persons/anna")
-print(x.result())
-x.update('36', "test/persons/anna/age")
 
-x.get("test/persons")
+x = JsonData.getinstance()
+x.get("test")
+print(x.result())
+y = {
+    'persons': {
+        'anna': {
+            "age": 40
+        }
+    }
+}
+
+
+def update(d, u):
+    for k, v in six.iteritems(u):
+        dv = d.get(k, {})
+        if not isinstance(dv, collectionsAbc.Mapping):
+            d[k] = v
+        elif isinstance(v, collectionsAbc.Mapping):
+            d[k] = update(dv, v)
+        else:
+            d[k] = v
+    return d
+
+
+print(x.result())
+print(update(x.result(), y))
+
+'''
+x = JsonData.getinstance()
+x.get("test")
+print(x.result())
+y = {
+    'persons': {
+        'anna': {
+            "age": 40
+        }
+    }
+}
+x.update(x.result(), y, "test")
+
+x.get("test")
 print(x.result())
 
 exit()
@@ -93,3 +141,4 @@ if not x.error():
     print(x.get_rule())
 else:
     print(x.error())
+'''
