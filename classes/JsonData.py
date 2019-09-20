@@ -70,21 +70,25 @@ class JsonData:
     def result(self):  # return the result of the current path
         return self.__result
 
-    def update(self, old_dict, new_data, top_dict):  # build and update a json file
+    def update(self, new_data, target_file):  # build and update a json file
         if self.__error is False:
-            file = "../json/" + top_dict + '.json'
-            for k, v in six.iteritems(new_data):
-                dv = old_dict.get(k, {})
-                if not isinstance(dv, collectionsAbc.Mapping):
-                    old_dict[k] = v
-                elif isinstance(v, collectionsAbc.Mapping):
-                    old_dict[k] = self.update(dv, v, top_dict)
-                else:
-                    old_dict[k] = v
-                # return old_dict
-            self.__save(old_dict, file)
+            file = "../json/" + target_file + '.json'
+            self.get(target_file)
+            old_dict = self.result()
+
+            def json_update(d, u):
+                for k, v in six.iteritems(u):
+                    dv = d.get(k, {})
+                    if not isinstance(dv, collectionsAbc.Mapping):
+                        d[k] = v
+                    elif isinstance(v, collectionsAbc.Mapping):
+                        d[k] = json_update(dv, v)
+                    else:
+                        d[k] = v
+                return d
+            return_data = json_update(old_dict, new_data)
+            self.__save(file, return_data)
             self.__pull_all()
-            return old_dict
 
     def error(self):  # return the current error
         return self.__error
@@ -98,47 +102,14 @@ print(x.result())
 y = {
     'persons': {
         'anna': {
-            "age": 40
+            "age": 10
+        },
+        'jasper': {
+            "sandwitch": "ældskfjgiromv"
         }
     }
 }
 
-
-def update(d, u):
-    for k, v in six.iteritems(u):
-        dv = d.get(k, {})
-        if not isinstance(dv, collectionsAbc.Mapping):
-            d[k] = v
-        elif isinstance(v, collectionsAbc.Mapping):
-            d[k] = update(dv, v)
-        else:
-            d[k] = v
-    return d
-
-
+x.update(y, "test")
+x.get('test')
 print(x.result())
-print(update(x.result(), y))
-
-'''
-x = JsonData.getinstance()
-x.get("test")
-print(x.result())
-y = {
-    'persons': {
-        'anna': {
-            "age": 40
-        }
-    }
-}
-x.update(x.result(), y, "test")
-
-x.get("test")
-print(x.result())
-
-exit()
-if not x.error():
-    print(x.result())
-    print(x.get_rule())
-else:
-    print(x.error())
-'''
