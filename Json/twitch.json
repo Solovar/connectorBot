@@ -1,7 +1,8 @@
 {
   "rule": {
     "update": true,
-    "make": false
+    "make": false,
+    "delete" : false
   },
   "alerts":{
     "follows": true,

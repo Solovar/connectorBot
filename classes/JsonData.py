@@ -74,21 +74,42 @@ class JsonData:
         if self.__error is False:
             file = "../json/" + target_file + '.json'
             self.get(target_file)
-            old_dict = self.result()
+            if not self.__error and self.__rule["update"]:
+                old_dict = self.result()
 
-            def json_update(d, u):
-                for k, v in six.iteritems(u):
-                    dv = d.get(k, {})
-                    if not isinstance(dv, collectionsAbc.Mapping):
-                        d[k] = v
-                    elif isinstance(v, collectionsAbc.Mapping):
-                        d[k] = json_update(dv, v)
-                    else:
-                        d[k] = v
-                return d
-            return_data = json_update(old_dict, new_data)
-            self.__save(file, return_data)
-            self.__pull_all()
+                def json_update(d, u):
+                    for k, v in six.iteritems(u):
+                        dv = d.get(k, {})
+                        if not isinstance(dv, collectionsAbc.Mapping):
+                            d[k] = v
+                        elif isinstance(v, collectionsAbc.Mapping):
+                            d[k] = json_update(dv, v)
+                        else:
+                            d[k] = v
+                    return d
+                return_data = json_update(old_dict, new_data)
+                self.__save(file, return_data)
+                self.__pull_all()
+            else:
+                self.__error = "file not found or not permitted to do .update()"
+
+    def delete(self, delete_keys, target):
+        self.get(target)
+        if not self.__error and self.get_rule()['delete']:
+            def delete_keys_from_dict(dictionary, keys):
+                keys_set = set(keys)  # Just an optimization for the "if key in keys" lookup.
+
+                modified_dict = {}
+                for key, value in dictionary.items():
+                    if key not in keys_set:
+                        if isinstance(value, collectionsAbc.MutableMapping):
+                            modified_dict[key] = delete_keys_from_dict(value, keys_set)
+                        else:
+                            modified_dict[key] = value  # or copy.deepcopy(value) if a copy is desired for non-dicts.
+                return modified_dict
+            print(delete_keys_from_dict(self.__result, delete_keys))
+        else:
+            self.__error = "file not found or not permitted to do .delete()"
 
     def error(self):  # return the current error
         return self.__error
@@ -110,6 +131,11 @@ y = {
     }
 }
 
+v = ("age")
 x.update(y, "test")
 x.get('test')
+print(x.result())
+
+x.delete(v, "test")
+
 print(x.result())

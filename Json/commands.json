@@ -1,12 +1,14 @@
 {
   "rule": {
     "update": true,
-    "make": false
+    "make": false,
+    "delete" : false
   },
   "commands":{
     "rule": {
       "update": true,
-      "make": true
+      "make": true,
+      "delete" : true
     }
   }
 }
