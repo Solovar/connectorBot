@@ -15,7 +15,7 @@ $(document).ready(function() {
     var currentLocation = 'console';
     swapContent(false);
 
-    $(".content-btn").click(function () {
+    $(".content-btn").on('click', function () {
         let itemID = $(this).attr('id');
         swapContent(itemID)
     });
@@ -28,7 +28,7 @@ $(document).ready(function() {
         if (swap !== false) {
             getFrom = '#' + swap + '-block';
         }
-
+        // alert(getFrom)
         let data = $(getFrom).html();
         $(contentArea).prepend(data);
     }

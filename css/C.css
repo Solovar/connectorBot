@@ -42,6 +42,11 @@ a
     border-color: var(--complementary) !important;
 }
 
+.content-block
+{
+    display: none;
+}
+
 #content-area h2
 {
     font-size: 110%;
