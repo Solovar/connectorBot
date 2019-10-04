@@ -15,10 +15,17 @@ $(document).ready(function() {
     var currentLocation = 'console';
     swapContent(false);
 
-    $(".content-btn").on('click', function () {
+    $("html").on('click', '.content-btn', function () {
         let itemID = $(this).attr('id');
+        alert(itemID)
         swapContent(itemID)
     });
+
+    /*$(".content-btn").on('click', function () {
+        let itemID = $(this).attr('id');
+        alert(itemID)
+        swapContent(itemID)
+    });*/
 
     function swapContent(swap) {
         let getFrom = '#' + currentLocation + '-block';

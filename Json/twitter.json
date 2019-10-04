@@ -12,5 +12,8 @@
   "latestResponds":{
     "tweets":{},
     "tags": {}
+  },
+  "automatedTweet":{
+    "tweets":[]
   }
 }
