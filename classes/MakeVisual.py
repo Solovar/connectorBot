@@ -14,7 +14,7 @@ class MakeVisual:
     def add_block(self, html, where):
         pass
 
-    def _lunch_gui(self, title):
+    def __lunch_gui(self, title):
 
         def evaluate_all(window):
             window.load_css(self.__blocks['head'])
@@ -25,7 +25,7 @@ class MakeVisual:
         window = webview.create_window(title, html=str(self.__blocks["compiled"]), min_size=(800, 500), confirm_close=True, background_color='#2d2d2d', text_select=True)
         webview.start(evaluate_all, window)
 
-    def _compile(self):
+    def __compile(self):
         self.__blocks['compiled'] += '<!DOCTYPE html><html lang="en">'
         self.__blocks['compiled'] += '<body>'
         self.__blocks['compiled'] += '<div class="container">'
@@ -43,8 +43,8 @@ class MakeVisual:
                 self.__blocks[order[i]] = self.__blocks[order[i]] + str(f.read())
                 f.close()
 
-        self._compile()
-        return self._lunch_gui(title)
+        self.__compile()
+        return self.__lunch_gui(title)
 
     def get_block(self):
         return self.__blocks

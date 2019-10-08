@@ -22,8 +22,8 @@ a
 {
     color: var(--light);
 }
-    a:hover{
-        color: var(--complementary);
+    a:hover, .active{
+        color: var(--complementary) !important;
         background-color: var(--gray);
     }
 
