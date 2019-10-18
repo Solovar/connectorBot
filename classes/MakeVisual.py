@@ -1,63 +1,48 @@
-import webview
-from os import listdir
 
 
 class MakeVisual:
 
     def __init__(self):
-        self.__blocks = {"compiled": "", "head": "", "body": "", "JS": ""}
-        self.__data = ()
+        self.__blob = '<!DOCTYPE html><html><head>' + self.style() + "</head><body>" +  self.header() + self.navigation() + self.scripts() + '</body></html>'
 
-    def add_data(self, data):
+    def style(self):
+        files = ('bootstrap.min.css', 'style.css')
+        return_data = '<style> '
+        for item in files:
+            f = open("css/" + item, "r")
+            return_data += ' /* SPACER!! */ ' + f.read()
+
+        return_data += '</style>'
+        return return_data
+
+    def header(self):
+        f = open("html/header.html", "r")
+        return f.read()
+
+    def navigation(self):
+        f = open("html/nav.html", "r")
+        return f.read()
+
+    def modal(self):
         pass
 
-    def add_block(self, html, where):
+    def scripts(self):
+        files = ('bootstrap.bundle.min.js', 'jquery-3.3.1.slim.min.js', 'script.js')
+        return_data = '<script> '
+        for item in files:
+            f = open("javaScript/" + item, "r")
+            return_data += ' /* SPACER!! */ ' + f.read()
+
+        return_data += '</script>'
+        return return_data
+
+    def image(self):
         pass
 
-    def __lunch_gui(self, title):
-
-        def evaluate_all(window):
-            window.load_css(self.__blocks['head'])
-            result = window.evaluate_js(
-                str(self.__blocks["JS"])
-            )
-
-        window = webview.create_window(title, html=str(self.__blocks["compiled"]), min_size=(800, 500), confirm_close=True, background_color='#2d2d2d', text_select=True)
-        webview.start(evaluate_all, window)
-
-    def __compile(self):
-        self.__blocks['compiled'] += '<!DOCTYPE html><html lang="en">'
-        self.__blocks['compiled'] += '<body>'
-        self.__blocks['compiled'] += '<div class="container">'
-        self.__blocks['compiled'] += self.__blocks['body']
-        self.__blocks['compiled'] += '</div>'
-        self.__blocks['compiled'] += '</body>'
-        self.__blocks['compiled'] += '</html>'
-
-    def build(self, title):
-        build_dirs = ("../javaScript", "../html", "../css")
-        order = ('JS', 'body', 'head')
-        for i, val in enumerate(build_dirs):
-            for item in listdir(val):
-                f = open(val + '/' + item, "r")
-                self.__blocks[order[i]] = self.__blocks[order[i]] + str(f.read())
-                f.close()
-
-        self.__compile()
-        return self.__lunch_gui(title)
-
-    def get_block(self):
-        return self.__blocks
-
-    def get_data(self):
-        return self.__data
+    def make(self):
+        return self.__blob
 
 
-x = MakeVisual()
+# x = MakeVisual()
 
-x.build('title')
-exit()
-for i in x.get_block():
-    print('<-------- ' + str(i) + " block")
-    print(x.get_block()[i])
-    print('<-------- end of ' + str(i) + " block")
+#print()
