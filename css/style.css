@@ -29,9 +29,9 @@ a
 
 .container{
     float: left;
-    width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
+    min-width: 510px !important;
+    /*margin: 0 !important;
+    padding: 0 !important; */
 }
 
 .highlight{
@@ -44,7 +44,7 @@ a
 
 .content-block
 {
-    display: none;
+    /*display: none;*/
 }
 
 #content-area h2

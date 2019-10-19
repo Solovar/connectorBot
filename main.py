@@ -14,8 +14,23 @@ ui = FlaskUI(app)
 @app.route("/")
 def index():
     x = MakeVisual()
-    # print(x.make())
-    return x.make()
+    x.add_html('console')
+    return x.print()
+
+
+@app.route("/Twitter")
+def twitter():
+    x = MakeVisual()
+    x.add_html('twitter')
+    print(x.print())
+    return x.print()
+
+
+@app.route("/Settings")
+def settings():
+    x = MakeVisual()
+    x.add_html('settings')
+    return x.print()
 
 
 # call the 'run' method

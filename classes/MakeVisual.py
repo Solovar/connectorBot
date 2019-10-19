@@ -3,7 +3,8 @@
 class MakeVisual:
 
     def __init__(self):
-        self.__blob = '<!DOCTYPE html><html><head>' + self.style() + "</head><body>" +  self.header() + self.navigation() + self.scripts() + '</body></html>'
+        self.__blob = ''
+        self.__add_block = ''
 
     def style(self):
         files = ('bootstrap.min.css', 'style.css')
@@ -18,6 +19,10 @@ class MakeVisual:
     def header(self):
         f = open("html/header.html", "r")
         return f.read()
+
+    def add_html(self, filename):
+        f = open("html/routes/" + filename + ".html", "r")
+        self.__add_block = f.read()
 
     def navigation(self):
         f = open("html/nav.html", "r")
@@ -36,10 +41,8 @@ class MakeVisual:
         return_data += '</script>'
         return return_data
 
-    def image(self):
-        pass
-
-    def make(self):
+    def print(self):
+        self.__blob = '<!DOCTYPE html><html><head>' + self.style() + '</head><body><div class="container p-0">' + self.header() + self.navigation() + '<div id="content-area" class="col-10 p-0">' + self.__add_block + '</div></div>' + self.scripts() + '</body></html>'
         return self.__blob
 
 
