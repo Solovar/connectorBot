@@ -42,7 +42,7 @@ class MakeVisual:
         return return_data
 
     def print(self):
-        self.__blob = '<!DOCTYPE html><html><head>' + self.style() + '</head><body><div class="container p-0">' + self.header() + self.navigation() + '<div id="content-area" class="col-10 p-0">' + self.__add_block + '</div></div>' + self.scripts() + '</body></html>'
+        self.__blob = '<!DOCTYPE html><html><head>' + self.style() + '</head><body><div class="container p-0">' + self.header() + self.navigation() + '<div id="content-area" class="col-9 p-0">' + self.__add_block + '</div></div>' + self.scripts() + '</body></html>'
         return self.__blob
 
 

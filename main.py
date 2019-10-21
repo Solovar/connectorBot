@@ -22,7 +22,20 @@ def index():
 def twitter():
     x = MakeVisual()
     x.add_html('twitter')
-    print(x.print())
+    return x.print()
+
+
+@app.route("/Twitter/Auto")
+def tweet_auto():
+    x = MakeVisual()
+    x.add_html('twitter-auto')
+    return x.print()
+
+
+@app.route("/Twitter/New")
+def tweet_new():
+    x = MakeVisual()
+    x.add_html('twitter-new')
     return x.print()
 
 
