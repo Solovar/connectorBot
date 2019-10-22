@@ -29,7 +29,7 @@ a
 
 .container{
     float: left;
-    min-width: 510px !important;
+    min-width: 600px !important;
     /*margin: 0 !important;
     padding: 0 !important; */
 }
@@ -52,7 +52,7 @@ a
     font-size: 110%;
 }
 
-#content-area nav
+.notmainnav
 {
     min-height: auto !important;
 }

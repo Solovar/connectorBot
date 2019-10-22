@@ -11,33 +11,6 @@ $(document).ready(function() {
         $(".modal").modal('hide');
     });
 
-// for switching content and navigating
-    var currentLocation = 'console';
-    swapContent(false);
-
-    $("html").on('click', '.content-btn', function () {
-        let itemID = $(this).attr('id');
-        swapContent(itemID)
-    });
-
-    function swapContent(swap) {
-        let getFrom = '#' + currentLocation + '-block';
-        const contentArea = '#content-area';
-        $(contentArea).empty();
-
-        if (swap !== false) {
-            getFrom = '#' + swap + '-block';
-            set_location(swap)
-        }
-        loadData(currentLocation);
-        let data = $(getFrom).html();
-        $(contentArea).prepend(data);
-    }
-
-    function set_location(posis) {
-        currentLocation = posis
-    }
-
 // loading data on to locations
 
     function legalData(name) {
