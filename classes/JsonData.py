@@ -27,13 +27,14 @@ class JsonData:
         self.__dir = {}  # the main storage dict
         self.__result = None  # the results var
         self.__rule = {}  # rules set for the current path
+        self.__file_dir = '../static/Json'
         self.__pull_all()  # run pull all to the main dir
 
     def __pull_all(self):  # pulls all json from it's folder
         self.__dir = {}
-        for i in listdir('../Json'):
+        for i in listdir(self.__file_dir):
             name = i[:-5]
-            with open('../Json/' + i) as json_data:
+            with open(self.__file_dir + '/' + i) as json_data:
                 item = json.load(json_data)
                 self.__dir[str(name)] = item
 
@@ -71,7 +72,7 @@ class JsonData:
         return self.__result
 
     def update(self, new_data, target_file):  # build and update a json file
-        file = "../json/" + target_file + '.json'
+        file = self.__file_dir + "/" + target_file + '.json'
         self.get(target_file)
         if not self.__error and self.__rule["update"]:
             old_dict = self.result()
@@ -98,6 +99,9 @@ class JsonData:
             pass  # unfinished method needs be compleated at some point before commands function get's added
         else:
             self.__error = "file not found or not permitted to do .delete()"
+
+    def set_file_dir(self, dir):
+        self.__file_dir = dir
 
     def error(self):  # return the current error
         return self.__error
