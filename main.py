@@ -51,6 +51,7 @@ def tweet_new():
 @app.route("/Settings")
 def settings():
     x = MakeVisual()
+    x.add_script('settings.js')
     x.add_html_from_file('settings')
     return x.printing()
 

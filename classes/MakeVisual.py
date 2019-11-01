@@ -5,6 +5,7 @@ class MakeVisual:
     def __init__(self):
         self.__blob = ''
         self.__add_block = ''
+        self.__script_to_add = ''
 
     def style(self):
         files = ('bootstrap.min.css', 'style.css')
@@ -31,25 +32,19 @@ class MakeVisual:
     def modal(self):
         pass
 
-    def scripts(self):
-        files = ('jquery-3.4.1.min.js', 'bootstrap.bundle.min.js', 'script.js')
+    def add_script(self, file_name):
+        self.__script_to_add = file_name
+
+    def __scripts(self):
+        files = ('jquery-3.4.1.min.js', 'bootstrap.bundle.min.js', self.__script_to_add)
         return_data = ''
         for item in files:
-            return_data += '<script src="/static/javaScript/' + item + '"></script> '
+            if not item == '':
+                return_data += '<script src="/static/javaScript/' + item + '"></script> '
         return return_data
-    '''
-    def scripts(self):
-        files = ('bootstrap.bundle.min.js', 'jquery-3.3.1.slim.min.js', 'script.js')
-        return_data = '<script> '
-        for item in files:
-            f = open("javaScript/" + item, "r")
-            return_data += ' /* SPACER!! */ ' + f.read()
 
-        return_data += '</script>'
-        return return_data
-        '''
     def printing(self):
-        self.__blob = '<!DOCTYPE html><html><head>' + self.style() + '</head><body><div class="container p-0">' + self.header() + '<div class="row">' + self.navigation() + '<div id="content-area" class="col-10">' + self.__add_block + '</div></div></div>' + self.scripts() + '</body></html>'
+        self.__blob = '<!DOCTYPE html><html><head>' + self.style() + '</head><body><div class="container p-0">' + self.header() + '<div class="row">' + self.navigation() + '<div id="content-area" class="col-10">' + self.__add_block + '</div></div></div>' + self.__scripts() + '</body></html>'
         return self.__blob
 
 

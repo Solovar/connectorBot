@@ -1,1 +1,1 @@
-{"rule": {"update": true, "make": false, "delete": false}, "persons": {"anna": {"age": 10}, "peter": {"age": 22}, "jasper": {"age": 12, "sandwitch": "\u00e6ldskfjgiromv"}}}
+{"rule": {"update": true, "make": false, "delete": false}, "persons": {"anna": {"age": 50}, "peter": {"age": 22}, "jasper": {"age": 12, "sandwitch": "\u00e6ldskfjgiromv"}}}

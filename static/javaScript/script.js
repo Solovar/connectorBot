@@ -24,9 +24,11 @@ $(document).ready(function() {
         success: function (data) {
             var items = [];
 
-            $.each(data, function (key, val) {
-
-                items.push('<li id="' + key + '">' + val + '</li>');
+            $.each(data['persons'], function (key, val) {
+                console.log('----------')
+                console.log(key);
+                console.log(val['age']);
+                items.push('<li>' + key + ' is: ' + val['age'] + ' years old</li>');
 
             });
 
