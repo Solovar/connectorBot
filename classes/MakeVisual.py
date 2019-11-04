@@ -23,7 +23,10 @@ class MakeVisual:
 
     def add_html_from_file(self, filename):
         f = open("html/routes/" + filename + ".html", "r")
-        self.__add_block = f.read()
+        self.__add_block += f.read()
+
+    def add_plain_html(self, string):
+        self.__add_block += string
 
     def navigation(self):
         f = open("html/nav.html", "r")
@@ -42,6 +45,9 @@ class MakeVisual:
             if not item == '':
                 return_data += '<script src="/static/javaScript/' + item + '"></script> '
         return return_data
+
+    def ajax_priting(self):
+        return self.__add_block
 
     def printing(self):
         self.__blob = '<!DOCTYPE html><html><head>' + self.style() + '</head><body><div class="container p-0">' + self.header() + '<div class="row">' + self.navigation() + '<div id="content-area" class="col-10">' + self.__add_block + '</div></div></div>' + self.__scripts() + '</body></html>'

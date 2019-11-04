@@ -1,28 +1,27 @@
 $(document).ready(function() {
-    setInterval(function () {
-        clear_area('#settings-block div')
-        do_stuff('#settings-block div')
+   setInterval(function () {
+        clear_area('#settings-block div');
+        do_stuff('#settings-block div');
     },1000);
 
     function do_stuff(add_to) {
-        $.ajax({
-            url: 'static/Json/test.json',
-            dataType: 'json',
-            success: function (data) {
-                var items = [];
-
-                $.each(data['persons'], function (key, val) {
-                    console.log('----------')
-                    console.log(key);
-                    console.log(val['age']);
-                    items.push('<li>' + key + ' is: ' + val['age'] + ' years old</li>');
-
-                });
-
-                var item = items.join('');
-                $(add_to).append(item)
-            }
+        $.get( "/AJAX/Settings", function( data ) {
+            $(add_to).html( data );
+            console.log( "Load was performed." );
         });
+        /*
+        $.ajax({
+            url: '/AJAX/Settings',
+            dataType: 'get',
+            success: function (xhr) {
+                console.log("it happend");
+                $(add_to).append(xhr['responseText'])
+            },
+            error: function(xhr) {
+                console.log('error');
+                console.log(xhr);
+            }
+        }); */
     }
 
     function clear_area(id) {

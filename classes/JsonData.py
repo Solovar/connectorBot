@@ -12,12 +12,12 @@ except:
 class JsonData:
     __instance = None  # set up the singleton instance
     @staticmethod
-    def getinstance():  # get current instance, if non make one
+    def getinstance(file='../static/Json'):  # get current instance, if non make one
         if JsonData.__instance is None:
-            JsonData()
+            JsonData(file)
         return JsonData.__instance
 
-    def __init__(self):
+    def __init__(self, file):
         if JsonData.__instance is not None:  # check that no new instance was attempted
             raise Exception("this class is a singleton")
         else:
@@ -27,7 +27,7 @@ class JsonData:
         self.__dir = {}  # the main storage dict
         self.__result = None  # the results var
         self.__rule = {}  # rules set for the current path
-        self.__file_dir = '../static/Json'
+        self.__file_dir = file
         self.__pull_all()  # run pull all to the main dir
 
     def __pull_all(self):  # pulls all json from it's folder
