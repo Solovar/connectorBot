@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div id="twitterNew-block">
+        {% include 'twitter-nav.html' %}
+        <div class="row">
+            <h2 class="col-12 border-bottom border-complementary">Making New Tweet</h2>
+            <form class="col-12" method="post" action="/Twitter">
+                <textarea class="col-12 text-body ml-2 " name="text"></textarea>
+                <label class="col-4"><p>Add to Automated:</p><input type="checkbox" name="automated"></label>
+                <label class="col-4"><p>Add to Watch:</p><input type="checkbox" name="watch"></label>
+                <div class="col-12 pt-2 pl-0 border-top border-complementary">
+                    <button class="btn btn-light col-4">Send</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

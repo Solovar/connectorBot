@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Connector Bot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='javaScript/jquery-3.4.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='javaScript/bootstrap.bundle.min.js') }}"></script>
+
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+<div class="container p-0">
+    <header>
+        <div class="row border-bottom border-complementary mt-1">
+            <h1 class="col ml-2">Connector Bot</h1>
+        </div>
+    </header>
+    <div class="row">
+        <div class="col-2 p-0">
+            <nav class="m-0 p-0 border-right border-complementary">
+                <ul class="nav flex-column m-0 p-0">
+                    <li id="console" class="nav-item content-btn"><a class="nav-link text-center m-0" href="{{ url_for('index')}}">Console</a></li>
+                    <li id="twitter" class="nav-item content-btn"><a class="nav-link text-center m-0" href="{{ url_for('twitter') }}">Twitter</a></li>
+                    <li id="settings" class="nav-item content-btn"><a class="nav-link text-center m-0" href="{{ url_for('settings') }}">Settings</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="col-10">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+</body>
+</html>
