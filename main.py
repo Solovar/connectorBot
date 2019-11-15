@@ -1,8 +1,5 @@
-from flask import Flask
-from flask import request
-from flask import Flask, render_template
+from flask import Flask, request, render_template
 from flaskwebgui import FlaskUI  # get the FlaskUI class
-from classes.MakeVisual import MakeVisual
 from classes.JsonData import JsonData
 
 
@@ -14,7 +11,7 @@ json = JsonData.getinstance('static/Json')
 
 
 # do your logic as usual in Flask
-
+# Normal Routing
 @app.route("/")
 def index():
     # route = request.url_rule
@@ -48,7 +45,7 @@ def tweet_new():
 def settings():
     return render_template('settings.html')
 
-
+# Ajax
 @app.route("/AJAX/Settings")
 def ajaxed_settings():
     json.get("test/persons")
@@ -56,15 +53,13 @@ def ajaxed_settings():
     return render_template('ajax_settings.html', data=json_data)
 
 
-@app.route("/AJAX/show_tweets")
-def ajaxed_tweet():
-    x = MakeVisual()
-    json.get("test/persons")
-    return_data = ''
-    for key, val in json.result().items():
-        return_data += "<li>" + key + " is: " + str(val['age']) + " years old</li>"
-    x.add_plain_html(return_data)
-    return x.ajax_priting()
+@app.route("/AJAX/show_tweets/<action>", methods=['GET'])
+def ajaxed_tweet(action):
+    if action is "auto":
+        json.get("twitter/automatedTweet/tweets")
+    elif action is "tweet":
+        json.get("twitter/watch/tweets")
+    return render_template("ajax_show-tweet.html", action=action, data=json.result().items())
 
 '''
 @app.route("/get/<json_file_name>")
