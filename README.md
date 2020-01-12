@@ -1,7 +1,7 @@
 # ConnectorBot
 **Version:** Alpha
 
-**Build Status:** Not yet intended for public use
+**Build Status:** Not yet intended for public use, no UI
 
 #### Feature Currently working on
 * Restructuring
@@ -18,11 +18,21 @@
     * Monitor tweets
 * Twitch integration
     * Chat commands
-    * Event and alert responses 
+    * Chat Timers
     * Chat games
+    * Chat Management
+    * Event and alert responses
 * Streamer tools
     * Loyalty
-
+* Discord integration
+    * Go Live Notice
+    * Commands
+    * Timers
+    * Role Management
+* Discord/Twitch mirroring
+    * Commands
+    * Roles
+    
 #### Finished Features
 * Streamer tools
     * Basic file based Death/Action/Number counter
