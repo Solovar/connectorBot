@@ -58,6 +58,10 @@ class Counting:
                 with open('deathCounter/' + str(i), 'w') as outp:
                     outp.write(str(number))
 
+    def read_counter(self, file):
+        with open('deathCounter/' + str(file), 'r') as inp:
+            return inp.read()
+
     def create_counter(self, command):
         file_id = int(time.time())
         with open('deathCounter/' + str(command) + '_' + str(file_id) + '.txt', 'w') as outp:

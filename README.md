@@ -1,44 +1,31 @@
 # ConnectorBot
 **Version:** Alpha
 
-**Build Status:** Not yet intended for public use, working towards 1.0 BETA
+**Build Status:** Not yet intended for public use
 
 #### Feature Currently working on
-* Twitter integration
-    * Tweet
-    * Retweet
-#### Feature required for BETA release
-* Twitter
-    * Tweet
-    * Retweet
-    * Automated go live Tweet 
-    * Automated change game Tweet
-    * Tweet tracking
-* Twitch
-    * Dashboard integration
-    * Chat
-* exe install method
+* Restructuring
+* Pruning of old stuff
+* Brainstorming new features
+
 #### Current Features Planned for later
 * Twitter integration
-    * Tweet
+    * Automatic Name change
+    * Automatic Tweet go live
+    * Automatic Tweet game change
     * Retweet
-    * Automated go live Tweet 
-    * Automated change game Tweet
-    * Tweet tracking
-    * hash tag tracking
-    * name changing
-* Twitch and chat integration
-    * Dashboard integration
-    * Chat
-    * Twitch chat commands
-        * Song Requests
-        * SFX commands
-        * chat games
-        * quotes
-        * twitch tage, title and game editing
-    * Loyalty Points/currency
+    * Monitor tags
+    * Monitor tweets
+* Twitch integration
+    * Chat commands
+    * Event and alert responses 
+    * Chat games
+* Streamer tools
+    * Loyalty
 
 #### Finished Features
-* non yet
+* Streamer tools
+    * Basic file based Death/Action/Number counter
 #### Known issues
-* non yet
+* Streamer tools
+    * Death counter can only contains the number, needs to be updated, so text can be included in file
