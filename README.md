@@ -4,9 +4,7 @@
 **Build Status:** Not yet intended for public use, no UI
 
 #### Feature Currently working on
-* Restructuring
-* Pruning of old stuff
-* Brainstorming new features
+* Music player using youtube
 
 #### Current Features Planned for later
 * Twitter integration
@@ -26,7 +24,7 @@
     * Event and alert responses
 * Streamer tools
     * Loyalty
-    * Music player, youtube maybe spottify
+    * Music player spottify support
 * Discord integration
     * Go Live Notice
     * Commands
