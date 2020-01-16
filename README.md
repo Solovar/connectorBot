@@ -19,11 +19,14 @@
 * Twitch integration
     * Chat commands
     * Chat Timers
+    * Song Requests
     * Chat games
     * Chat Management
+    * Chat stream control
     * Event and alert responses
 * Streamer tools
     * Loyalty
+    * Music player, youtube maybe spottify
 * Discord integration
     * Go Live Notice
     * Commands

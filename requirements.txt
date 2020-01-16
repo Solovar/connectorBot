@@ -1,0 +1,3 @@
+python-vlc==3.0.7110
+pafy==0.5.5
+youtube_dl=2020.1.15
