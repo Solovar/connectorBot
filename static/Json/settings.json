@@ -1,8 +1,0 @@
-{
-  "rule": {
-    "update": true,
-    "make": false,
-    "delete" : false
-  }
-
-}

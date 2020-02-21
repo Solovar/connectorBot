@@ -22,6 +22,7 @@
     * Chat Management
     * Chat stream control
     * Event and alert responses
+
 * Streamer tools
     * Loyalty
     * Music player spottify support
